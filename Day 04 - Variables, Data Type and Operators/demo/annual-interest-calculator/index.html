@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Calculator</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <script src="assets/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container pt-4">
+            <div class="mb-3">
+                <label for="amount" class="form-label">Số tiền</label>
+                <input type="number" min="1" max="90000" name="amount" onkeyup="getInput(this)" class="form-control" id="amount" placeholder="50 triệu VNĐ">
+            </div>
+            <div class="mb-3">
+                <label for="rate" class="form-label">Tiền lãi</label>
+                <input type="number" min="0.01" max="20.00" step="0.01" name="rate" class="form-control" id="rate" placeholder="6.9%">
+            </div>
+            <div class="mb-3">
+                <label for="year" class="form-label">Số năm cần vay</label>
+                <input type="number" class="form-control" name="year" id="year" placeholder="2 năm">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" class="form-control" name="password" id="password" required>
+            </div>
+            
+            <button class="btn btn-primary" onclick="handleSubmit()">Tính</button>
+    </div>
+
+    <script>
+        let amount, rate, year;
+        function getInput(object) {
+            console.log(obj.name);
+            console.log(obj.value);
+        }
+        function handleSubmit() {
+            console.log("Clicked!");
+        }
+    </script>
+</body>
+
+</html>
