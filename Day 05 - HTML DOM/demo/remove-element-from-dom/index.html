@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove elements from DOM</title>
+</head>
+
+<body>
+    <div class="container" id="content">
+        <p id="first-para">This is first paragraph</p>
+        <p id="second-para">This is second paragraph</p>
+        <p>This content will not be removed!</p>
+    </div>
+    <script>
+        let contentDiv = document.getElementById("content");
+        let firstPara = document.getElementById("first-para");
+        let secondPara = document.getElementById("second-para");
+        let pTag = document.getElementsByTagName("p");
+        // Method 01
+        firstPara.remove();
+        // Method 02
+        contentDiv.removeChild(secondPara);
+        // Method 03 - Remove all child nodes of the container element using a loop and remove
+        for (const key in pTag) {
+            console.log(pTag[key]);
+            contentDiv.remove(pTag[key]);
+        }
+    </script>
+</body>
+
+</html>
