@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year</title>
+</head>
+
+<body>
+    <input type="number" onchange="getYear(this)">
+    <button id="checkBtn">Check</button>
+    <script>
+        // declare variables
+        let year;
+        let checkBtn = document.getElementById("checkBtn");
+        // get input
+        function getYear(obj) {
+            let number = obj.value;
+            if (number < 0) {
+                alert("Please enter a positive integer as a year");
+            } else {
+                year = parseInt(number);
+            }
+        }
+        // click check button
+        checkBtn.addEventListener("click", function () {
+            if (isLeapYear(year)) {
+                console.log(year + " is a leap year");
+            } else {
+                console.log(year + " is NOT a leap year");
+            }
+        })
+
+        function isLeapYear(year) {
+            if (year % 4 == 0) {
+                if (year % 100 == 0) {
+                    if (year % 400 == 0) {
+                        // divisible by 4, 100, 400
+                        return true;
+                    } else {
+                        // divisible by 4, 100, not 400
+                        return false;
+                    }
+                } else {
+                    // divisible by 4, not 100
+                    return true;
+                }
+            } else {
+                // not divisible by 4
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

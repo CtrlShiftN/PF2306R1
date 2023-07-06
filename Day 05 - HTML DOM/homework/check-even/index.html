@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check even numbers</title>
+</head>
+
+<body>
+    <input type="number" name="number" onchange="getNunber(this)" id="numberInput"
+        placeholder="Please enter an integer...">
+    <br><br>
+    <button id="checkBtn">Check!</button>
+    <p id="result"></p>
+    <script>
+        let checkBtn = document.getElementById("checkBtn");
+        let result = document.getElementById("result");
+        // get number 01
+        let number;
+        function getNunber(obj) {
+            number = obj.value;
+        }
+        // get number 02
+        // let numberInput = document.getElementById("numberInput");
+        // numberInput.addEventListener("change", function () {
+        //     number = numberInput.value;
+        // });
+
+        checkBtn.addEventListener("click", function () {
+            // check if number is divided by 2
+            if (number % 2 == 0) {
+                // console.log(number + " is even");
+                // alert(number + " is even");
+                // document.write(number + " is even");
+                result.innerText = number + " is even";
+            } else {
+                // console.log(number + " is odd");
+                // alert(number + " is odd");
+                // document.write(number + " is odd");
+                result.innerText = number + " is odd";
+            }
+        })
+    </script>
+</body>
+
+</html>

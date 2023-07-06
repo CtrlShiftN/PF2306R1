@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanded Calculator</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <script src="assets/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <input type="text" id="displayBox" disabled size="45">
+        <!-- Buttons -->
+        <div class="operators pt-2">
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="clearDisplay()">C</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addOperator('+')">+</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addOperator('-')">-</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addOperator('*')">*</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addOperator('/')">/</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="equal()">=</button>
+        </div>
+        <div class="number-buttons">
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="0">0</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="1">1</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="2">2</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="3">3</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="4">4</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="5">5</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="6">6</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="7">7</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="8">8</button>
+            <button class="btn btn-light btn-outline-dark px-3 m-2" onclick="addNumber(this)" value="9">9</button>
+        </div>
+    </div>
+    <script>
+        let firstNumber, secondNumber, result, displayText, temp = "", operator;
+        let displayBox = document.getElementById("displayBox");
+        function clearDisplay() {
+            displayBox.value = "";
+            temp = "";
+        }
+        // Add numbers to the calculator screen and update it accordingly
+        function addNumber(obj) {
+            let num = obj.value;
+            temp += num;
+            displayBox.value = temp;
+        }
+        function addOperator(op) {
+            if (temp.length > 0) {
+                firstNumber = Number(temp);
+                temp = "";
+            }
+            operator = op;
+        }
+        function equal() {
+            if (temp.length == 0) {
+                displayBox.value = firstNumber;
+            }else {
+                secondNumber = Number(temp);
+                switch (operator){
+                    case "+": displayBox.value = firstNumber + secondNumber;break;
+                    case "-": displayBox.value = firstNumber - secondNumber;break;
+                    case "*": displayBox.value = firstNumber * secondNumber;break;
+                    case "/": displayBox.value = firstNumber / secondNumber;break;
+                    default: break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
