@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Grade Total</title>
+</head>
+
+<body>
+    Môn Văn <input type="number" name="literature" onchange="getGrade(this, 'literature')">
+    <br><br>
+    Môn Toán <input type="number" name="maths" onchange="getGrade(this, 'maths')">
+    <br><br>
+    Môn Anh <input type="number" name="english" onchange="getGrade(this, 'english')">
+    <br><br>
+    Khu Vực
+    <select name="" onchange="getArea(this)">
+        <option value="KV1">KV1</option>
+        <option value="KV2">KV2</option>
+        <option value="KV2-NT">KV2 - NT</option>
+        <option value="KV3">KV3</option>
+    </select>
+    <br><br>
+    <button onclick="cal()">Tính</button>
+    <br><br>
+    <p id="result"></p>
+    <script>
+        let maths, literature, english, bonus, total;
+        let result = document.getElementById('result');
+        function getGrade(obj, subject) {
+            let grade = obj.value;
+            switch (subject) {
+                case "maths":
+                    maths = Number(grade);
+                    break;
+                case "literature":
+                    literature = Number(grade);
+                    break;
+                case "english":
+                    english = Number(grade);
+                    break;
+                default:
+                    break;
+            }
+            // console.log("M = ", maths);
+            // console.log("L = ", literature);
+            // console.log("E = ", english);
+        }
+        function getArea(obj) {
+            let area = obj.value;
+            switch (area) {
+                case "KV1":
+                    bonus = 0.75;
+                    break;
+                case "KV2":
+                    bonus = 0.5;
+                    break;
+                case "KV2-NT":
+                    bonus = 0.25;
+                    break;
+                default:
+                    bonus = 0;
+                    break;
+            }
+            // console.log("Area: ", area, bonus);
+        }
+        function cal() {
+            total = maths + literature + english + bonus;
+            result.innerHTML = `Total score is ${total}`;
+        }
+    </script>
+</body>
+
+</html>

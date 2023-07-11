@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" name="month" onchange="getMonth(this)">
+    <br><br>
+    <button onclick="getNoOfDay()">Tính số ngày</button>
+    <br><br>
+    <p id="result"></p>
+    <script>
+        let month, noOfDay;
+        let result = document.getElementById("result");
+        function getMonth(obj) {
+            month = Number(obj.value);
+        }
+        function getNoOfDay() {
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12: noOfDay = 31; break;
+                case 4:
+                case 6:
+                case 9:
+                case 11: noOfDay = 30; break;
+                case 2: noOfDay = "28 hoặc 29"; break;
+                default:
+                    noOfDay = 0;
+                    break;
+            }
+            if (noOfDay) {
+                result.innerText = `Tháng ${month} có ${noOfDay} ngày!`;
+            }else {
+                result.innerText = "Tháng này ứ xác định được!";
+            }
+        }
+    </script>
+</body>
+
+</html>

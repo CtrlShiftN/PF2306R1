@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit</title>
+</head>
+<body>
+    <input type="text" name="fruit-name" id="fruit-name">
+    <br>
+    <button id="check-button">Check</button>
+    <p id="result"></p>
+    <script>
+        // khai bao bien
+        let fruitNameInput = document.getElementById("fruit-name");
+        const checkButton = document.getElementById("check-button");
+        let result = document.getElementById("result");
+        let fruitName;
+        // xu ly du lieu, event
+        fruitNameInput.addEventListener("change", function(){
+            // fruitName = this.value;
+            fruitName = fruitNameInput.value;
+        });
+        checkButton.addEventListener('click',function() {
+            let price;
+            switch (fruitName) {
+                case "Ổi":
+                    price = 20000 + "VND";
+                    break;
+                case "Cam":
+                    price = 30000 + "VND";
+                    break;
+                default:
+                    price = "No item found!";
+                    break;
+            }
+            console.log(price);
+        })
+        // in ket qua
+    </script>
+</body>
+</html>
