@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+
+<body>
+    <script>
+        let height = Number(prompt("Enter your height in meter: "));
+        let weight = Number(prompt("Enter your weight in kg: "));
+        let bmi = weight / Math.pow(height, 2);
+        let bmi2 = weight / (height * height);
+        let bmi3 = weight / (height ** 2);
+        if (bmi < 16) {
+            console.log("Too thin");
+        }else if (bmi >= 16 && bmi < 17){
+            console.log("...");
+        }else{
+            // TODO: 
+        }
+    </script>
+</body>
+
+</html>
