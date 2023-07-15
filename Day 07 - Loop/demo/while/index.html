@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While</title>
+</head>
+<body>
+    <script>
+        // let text;
+        // while (text != 'q') {
+        //     text = prompt("Please enter something. Enter 'q' to quit")
+        //     document.write(text + "<br>")
+        // }
+        // validate nhap vao ngay trong thang
+        let day = 0;
+        while (day <= 0 || day >31) {
+            day = parseInt(prompt("Enter date: "))
+        }
+        console.log("day: "+ day);
+    </script>
+</body>
+</html>
