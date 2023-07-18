@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing number</title>
+</head>
+
+<body>
+    <div class="container">
+        <button onclick="play()">Play</button>
+    </div>
+    <script>
+        function play() {
+            // Math.random() * max + min
+            // [0.0 - 1.0] * max = [0.0 - max.0]
+            // [0.0 - 1.0] * max + min = [0.0 - max.0] + min = [min.0 - max.0 + min]
+            // [0.0 - 1.0] * (max - min) + min = [0.0 - (max - min).0] + min = [min.0 - {(max-min).0 + min}] = [min.0 - max.0]
+            let max = parseInt(prompt("What is the maximum number?"));
+            let randomNumber = Math.floor(Math.random() * max);
+            console.log(`Random Number: ${randomNumber}`);
+            let guessNumber = -1;
+            let count = 0;
+            do {
+                guessNumber = parseInt(prompt(`Enter a number between 0 and ${max}`))
+                if (guessNumber == randomNumber) {
+                    alert(`${guessNumber} You guessed it right!`);
+                    break;
+                }else{
+                    count++;
+                }
+                // if (count >= 3) {
+                //     break;
+                // }
+            } while (guessNumber != randomNumber && count < 3)
+            console.log("End!");
+        }
+
+    </script>
+</body>
+
+</html>
