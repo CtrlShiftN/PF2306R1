@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Pyramid</title>
+</head>
+
+<body>
+    <script>
+        let n = 5;
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        // bottom left
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j <= i; j++) {
+                // document.write("*")
+                document.write((j + 1) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j <= i; j++) {
+                // document.write("*")
+                document.write((n - j) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        // *****
+        // ****
+        // ***
+        // **
+        // *
+        // top left
+        for (let i = n; i > 0; i--) {
+            for (let j = 0; j < i; j++) {
+                document.write((j + 1) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        for (let i = n; i > 0; i--) {
+            for (let j = 0; j < i; j++) {
+                document.write((n - j) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        //     *
+        //    **
+        //   ***
+        //  ****
+        // *****
+        // bottom right
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j <= n - i - 1; j++) {
+                document.write("&nbsp;&nbsp;&nbsp;")
+            }
+            for (let k = 0; k <= i; k++) {
+                // document.write("*")
+                document.write((k + 1) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j <= n - i - 1; j++) {
+                document.write("&nbsp;&nbsp;&nbsp;")
+            }
+            for (let k = 0; k <= i; k++) {
+                // document.write("*")
+                document.write((i - k + 1) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        // *****
+        //  ****
+        //   ***
+        //    **
+        //     *
+        // top right
+        for (let i = 0; i < n; i++) {
+            for (let k = 0; k <= i; k++) {
+                document.write("&nbsp;&nbsp;&nbsp;")
+            }
+            for (let j = 0; j < n - i; j++) {
+                // document.write("*")
+                document.write((j + 1) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        for (let i = 0; i < n; i++) {
+            for (let k = 0; k <= i; k++) {
+                document.write("&nbsp;&nbsp;&nbsp;")
+            }
+            for (let j = 0; j < n - i; j++) {
+                // document.write("*")
+                document.write((n - i - j) + " ")
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        // pyramid
+        //     *
+        //    ***
+        //   *****
+        //  *******
+        // *********
+        // bottom right + bottom left
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j <= n - i - 1; j++) {
+                document.write("&nbsp;&nbsp;&nbsp;")
+            }
+            for (let k = 0; k <= i; k++) {
+                // document.write("*")
+                document.write((i - k + 1) + " ")
+            }
+            for (let j = 1; j <= i; j++) {
+                // document.write("*")
+                document.write((j + 1) + " ")
+            }
+            document.write("<br>")
+        }
+        // *********
+        //  *******
+        //   *****
+        //    ***
+        //     *
+        // top right + top left
+    </script>
+</body>
+50^99  99!
+50.50.50...50      99.98.97
+50.50.50...50      (50+49).(50+48).97...50.(50-1)...(50-49)
+50.50.50...50      (50^2 - 49^2).(50+48).97...50.(50-1)...(50-49)
+50.50.50...50      (50^2 - 49^2).(50+48).97...50.(50-1)...(50-49)
+</html>
