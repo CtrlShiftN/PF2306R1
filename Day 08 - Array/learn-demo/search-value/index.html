@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [-3, 5, 1, 3, 2, 10];
+        let sortArr = [-3, 1, 2, 3, 5, 10]; 
+        // search value = 2
+        // 6 => mid = 3 => arr[3] = 3, left = 0, right = arr.lenght - 1
+        // searVal = 2 < 3 => mid = (0 + mid) / 2 = 1, left = 0, right = mid = (3)
+        // searVal = 2 > arr[1] = 1 => left = 1, right = 3 => mid = 2 
+        // searVal = 2 == arr[2] => "Found!"
+        console.log(arr);
+        // CACH 01
+        let val = 3;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == val) {
+                console.log(val +" is found at "+ i);
+                break;
+            }
+        }
+        // CACH 02
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        console.log(arr);
+        let mid = arr.length / 2;
+        while (true) {
+            if (val == arr[mid]) {
+                console.log("Found");
+            }else if (val < arr[mid]) {
+                mid = mid / 2;
+            }else { // val > arr[mid]
+                mid = (arr.length-1 + mid) / 2
+            }
+        }
+    </script>
+</body>
+</html>

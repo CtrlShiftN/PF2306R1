@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max value</title>
+</head>
+
+<body>
+    <script>
+        let arr = [-3, 5, 1, 3, 2, 10];
+        console.log(arr);
+        // CACH 01
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        console.log(max);
+        // CACH 02
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        console.log(arr);
+        console.log(arr[arr.length - 1]);
+        // CACH 03
+        arr.sort(function (a, b) {
+            return b - a;
+        });
+        console.log(arr);
+        console.log(arr[0]);
+        // CACH 04
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operation</title>
+</head>
+
+<body>
+    <div class="container">
+        <input type="number" onchange="getInput(this)" placeholder="Enter any number...">
+        <br><br>
+        <button onclick="add()">Add</button>
+        <button onclick="display()">Display</button>
+        <p id="output"></p><br />
+    </div>
+    <script>
+        let inputArray = [];
+        let tempValue;
+        let output = document.getElementById("output");
+        function getInput(obj) {
+            tempValue = Number(obj.value);
+        }
+        function add() {
+            inputArray.push(tempValue);
+        }
+        function display() {
+            let text = "";
+            for (let i = 0; i < inputArray.length; i++) {
+                text += "Element " + i + " = " + inputArray[i] + "<br>"
+            }
+            output.innerHTML = text;
+        }
+    </script>
+</body>
+
+</html>

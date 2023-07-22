@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Arr</title>
+</head>
+
+<body>
+    <script>
+        let arr = [-3, 5, 1, 3, 2, 10];
+        let reversedArr = []
+        console.log("Original Array: ", arr);
+        // CACH 01
+        for (let i = (arr.length - 1); i >= 0; i--) {
+            reversedArr.push(arr[i]);
+        }
+        console.log("Reversed Array 01: ", reversedArr);
+        // CACH 02
+        while (reversedArr.length!== arr.length) {
+            reversedArr.unshift(arr.pop());
+        }
+        console.log("Reversed Array 02: ", reversedArr);
+        // CACH 03
+        for (let i = 0, j = arr.length - 1; i < arr.length; i++, j--) {
+            reversedArr[j] = arr[i]
+        }
+        console.log("Reversed Array 03: ", reversedArr);
+        
+    </script>
+</body>
+
+</html>

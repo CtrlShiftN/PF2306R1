@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Max and Min in an Array</title>
+</head>
+
+<body>
+    <script>
+        let min, max;
+        let nums = [];
+        for (let i = 0; i < 100; ++i) {
+            nums[i] = Math.floor(Math.random() * 101);
+        }
+        console.log(nums);
+        // CACH 01
+        min = nums[0];
+        max = nums[0];
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+            }
+            if (nums[i] < min) {
+                min = nums[i];
+            }
+        }
+        console.log("Min = " + min);
+        console.log("Max = " + max);
+        // CACH 02
+        nums.sort(function (a, b) {
+            return a - b;
+        })
+        console.log("Min = " + nums[0]);
+        console.log("Max = " + nums[nums.length - 1]);
+        // CACH 03
+        console.log("Min = " + Math.min(nums));
+        console.log("Max = " + Math.max(nums));
+    </script>
+</body>
+
+</html>

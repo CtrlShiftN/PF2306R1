@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Array</title>
+</head>
+
+<body>
+    <script>
+        let cities = [
+            ["Hanoi", "HCM", "DaNang"],
+            ["Tokyo", "Osaka", "Nomi"],
+            ["City01", "City02", "City03"]
+        ]
+        console.log(cities[2][1]);
+        for (let row = 0; row < cities.length; row++) {
+            for (let col = 0; col < cities[row].length; col++) {
+                console.log(cities[row][col]);
+            }
+        }
+    </script>
+</body>
+
+</html>

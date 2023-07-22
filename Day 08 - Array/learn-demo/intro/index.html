@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Introduction</title>
+</head>
+
+<body>
+    <script>
+        // Array is a collection of elements
+        let fruits = ["apple", "banana", "orange"];
+        let fruitArray = new Array("apple", "banana", "orange");
+        console.log(fruits);  // Output: apple banana orange
+        console.log(fruitArray[2]);   // Output: orange
+        // Retrieve all elements in fruits using for loops
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(i + " - " + fruits[i]);
+        }
+        // using for-in to get all elements
+        for (const index in fruits) {
+            console.log(index + " : " + fruits[index]);
+        }
+    </script>
+</body>
+
+</html>
