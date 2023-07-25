@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        td {
+            width: 2rem;
+            height: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p id="board"></p>
+        <!-- Button to play the game -->
+        <button onclick="updateBoard()">Update</button>
+    </div>
+    <script>
+        const N = 5;
+        let matrix = [];
+        let boardHtml;
+        let board = document.getElementById("board");
+        // Init the NxN board
+        for (let row = 0; row < N; row++) {
+            matrix[row] = []
+            for (let col = 0; col < N; col++) {
+                matrix[row][col] = "0";
+            }
+        }
+        console.log(matrix);
+        // Display board to screen
+        // function displayBoard() {
+        //     boardHtml = "<table>";
+        //     for (let row = 0; row < N; row++) {
+        //         boardHtml += "<tr>";
+        //         for (let col = 0; col < N; col++) {
+        //             boardHtml += "<td>" + matrix[row][col] + "</td>"
+        //         }
+        //         boardHtml += "</tr>";
+        //     }
+        //     boardHtml += "</table>"
+        //     board.innerHTML = boardHtml;
+        // }
+        function updateBoard() {
+            // let x = promptPositionXY("x");
+            // let y = promptPositionXY("y");
+            let x = -1;
+            while (x < 0 || x >= N) {
+                x = prompt(`Please enter X (0-${N}): `)
+            }
+            let y = -1;
+            while (y < 0 || y >= N) {
+                y = prompt(`Please enter Y (0-${N}): `)
+            }
+            matrix[x][y] = "x";
+            boardHtml = "<table>";
+            for (let row = 0; row < N; row++) {
+                boardHtml += "<tr>";
+                for (let col = 0; col < N; col++) {
+                    boardHtml += "<td>" + matrix[row][col] + "</td>"
+                }
+                boardHtml += "</tr>";
+            }
+            boardHtml += "</table>"
+            board.innerHTML = boardHtml;
+            // displayBoard();
+        }
+        // function promptPositionXY(positionName) {
+        //     let temp = -1;
+        // while (temp < 0 || temp >= N) {
+        //     temp = prompt(`Please enter ${positionName} (0-${N}): `)
+        // }
+        //     return temp;
+        // }
+        boardHtml = "<table>";
+        for (let row = 0; row < N; row++) {
+            boardHtml += "<tr>";
+            for (let col = 0; col < N; col++) {
+                boardHtml += "<td>" + matrix[row][col] + "</td>"
+            }
+            boardHtml += "</tr>";
+        }
+        boardHtml += "</table>"
+        board.innerHTML = boardHtml;
+        // displayBoard();
+    </script>
+</body>
+
+</html>

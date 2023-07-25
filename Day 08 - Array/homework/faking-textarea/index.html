@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Textarea</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Type something to hack Nasa</h2>
+        <textarea id="my-textarea" cols="30" rows="10"></textarea>
+    </div>
+    <script>
+        const textarea = document.getElementById('my-textarea');
+        let fakedText = "You are terribly beautiful!!!"
+        let displayText = "";
+        let charsArr = [...fakedText];
+        let count = -1;
+        textarea.addEventListener("keyup", () => {
+            if (displayText.length == fakedText.length) {
+                displayText = "";
+                count = -1;
+            }
+            count++
+            displayText += charsArr[count]
+            textarea.value = `${displayText}`
+        })
+    </script>
+</body>
+
+</html>

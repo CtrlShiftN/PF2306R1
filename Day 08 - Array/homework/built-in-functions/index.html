@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built-in Functions</title>
+</head>
+<body>
+    <script>
+        // EX 01: Array to CSV
+        let myColor = ["Red", "Green", "White", "Black"];
+        // CACH 01: using join()
+        console.log(myColor.join());
+        // CACH 02: using toString()
+        console.log(myColor.toString());
+        // CACH 03: using loops
+        let colorStr = ""
+        for (let i = 0; i < myColor.length; i++) {
+            if (i != myColor.length - 1) {
+                colorStr += myColor[i] + ",";
+            }else{
+                colorStr += myColor[i];
+            }
+        }
+        console.log(colorStr);
+        // EX 02: Add "-" between 2 even numbers
+        let number = "0254689";
+        // CACH 01: 
+        let ex2Result = [];
+        let numbersArr = [...number]; // Convert a string to an array of chars
+        for (let i = 0; i < numbersArr.length; i++) {
+            if (numbersArr[i] % 2 == 0 && numbersArr[i+1] % 2 == 0) {
+                ex2Result.push(numbersArr[i] + "-")
+            }else{
+                ex2Result.push(numbersArr[i])
+            }
+        }
+        console.log("".concat(...ex2Result));
+        console.log(ex2Result.join(""));
+        // CACH 02:
+
+        // EX 03: lowercase to uppercase and vice-versa
+        let str = "wHat doEs tHe FoX sAy?";
+        // CACH 01: 
+        let charsArr = [...str];
+        for (let i = 0; i < charsArr.length; i++) {
+            if (charsArr[i] == charsArr[i].toLowerCase()) {
+                charsArr[i] = charsArr[i].toUpperCase();
+            }else {
+                charsArr[i] = charsArr[i].toLowerCase();
+            }
+        }
+        console.log(charsArr.join(""));
+        // CACH 02:
+        let charsArr2 = [...str];
+        for (let i = 0; i < charsArr2.length; i++) {
+            if (isLowerCase(charsArr2[i])) {
+                charsArr2[i] = charsArr2[i].toUpperCase();
+            }else {
+                charsArr2[i] = charsArr2[i].toLowerCase();
+            }
+        }
+        console.log(charsArr2.join(""));
+
+        function isLowerCase(str) {
+            return /^([a-z]+)$/.test(str);
+        }
+        function isUpperCase(str) {
+            return /^([A-Z]+)$/.test(str);
+        }
+    </script>
+</body>
+</html>
