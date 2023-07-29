@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers</title>
+</head>
+<body>
+    <script>
+        function isPrime(integer) {
+            let boolean = true;
+            for (let i = 2; i <= Math.sqrt(integer); i++) {
+                if (integer % i == 0) {
+                    boolean = false;
+                    break;
+                }
+            }
+            return boolean;
+        }
+        // Print prime numbers from a to b
+        for (let i = 2; i <= 100; i++) {
+            if (isPrime(i)) {
+                console.log(`The number ${i} is Prime.`);
+            }
+        }
+        // Print N first prime numbers
+        const N = 20;
+        let count = 0;
+        let initInteger = 2;
+        while (count < N) {
+            if (isPrime(initInteger)) {
+                count++;
+                console.log(`Prime at ${count} is ${initInteger}`);
+            }
+            initInteger++;
+        }
+        // Print M first prime numbers which is palindrome
+        function isPalindrome(number) {
+            // TODO:
+        }
+        const M = 10;
+        let countPrime = 0;
+        let initInt = 2;
+        while (countPrime < M) {
+            if (isPrime(initInt) && isPalindrome(initInt)) {
+                countPrime++;
+                console.log(`Prime, divided by 5, at ${countPrime} is ${initInt}`);
+            }
+            initInt++;
+        }
+    </script>
+</body>
+</html>

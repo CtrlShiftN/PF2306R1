@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [3, 5, 1, 8, -3, 7, 8]
+        let arr2 = [7, 12, 6, 9, 20, 56, 89]
+        let arr3 = []
+        let arr4 = [0, 0, 0, 0, 0, 0]
+
+        function findMinValue(integerArray) {
+            if (integerArray.length == 0) {
+                return null;
+            } else {
+                // CACH 01
+                // integerArray.sort(function (a, b) {
+                //     return a - b;
+                // });
+                // return integerArray[0];
+                // CACH 02
+                let min = integerArray[0]
+                for (let i = 1; i < integerArray.length; i++) {
+                    if (integerArray[i] <= min) {
+                        min = integerArray[i]
+                    }
+                }
+                return min;
+                // CACH 03
+                
+            }
+        }
+        console.log("Cach 01: " + findMinValue(arr1));
+        console.log("Cach 01: " + findMinValue(arr2));
+        console.log("Cach 01: " + findMinValue(arr3));
+        console.log("Cach 01: " + findMinValue(arr4));
+    </script>
+</body>
+
+</html>

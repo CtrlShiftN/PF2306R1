@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function confirmProcess(status) {
+            if (status) {
+                return "Excellent! We will win this game..."
+            }else{
+                return "Sorry... Better luck next time!"
+            }
+        }
+        let isPlay = confirm("Shall we play a game?")
+        console.log(isPlay);
+        alert(confirmProcess(isPlay));
+    </script>
+</body>
+</html>
