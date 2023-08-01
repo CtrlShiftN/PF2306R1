@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let starArr = "Polaris, Aldebaran, Deneb, Vega, Altair, Dubhe, Regulus".split(",")
+        let starGroupArr = "Ursa Minor, Tarurus, Cygnus, Lyra, Aquila, Ursa Major, Leo".split(",")
+        console.log(starArr) // ["Polaris", "Aldebaran",...]
+        function findStarGroup(starName) {
+            let result = starName + " is not found!";
+            for (const key in starArr) {
+                // console.log(starArr[key]);
+                if (starArr[key].trim() == starName) {
+                    result = starGroupArr[key];
+                    break;
+                }
+            }
+            return result;
+        }
+        console.log(findStarGroup("Deneb"));
+    </script>
+</body>
+
+</html>

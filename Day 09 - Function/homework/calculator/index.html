@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Square of a number
+        function square(num) {
+            return num ** 2;
+            // return num * num;
+            // return Math.pow(num, 2);
+        }
+        console.log("Square: " + square(5));
+        // Circle Area and Circum
+        function calculateAreaOfCircle(radius) {
+            return Math.PI * radius * radius;
+            // return Math.PI * (radius ** 2);
+            // return Math.PI * (Math.pow(radius, 2));
+        }
+        function calculateCircumOfCircle(radius) {
+            return Math.PI * radius * 2;
+        }
+        console.log(calculateAreaOfCircle(5), calculateCircumOfCircle(5));
+        // Factorial
+        function factorial(n) {
+            // if (n == 0 || n == 1) {
+            //     return 1
+            // } else {
+            //     return n * factorial(n - 1)
+            // }
+
+            let result = 1;
+            for (let i = n; i >= 1; i--) {
+                result *= i;
+            }
+            return result
+        }
+        console.log(factorial(5));
+        // Is a number
+        function isANumber(string) {
+            // return !isNaN(string);
+
+            return /^[0-9]+[.|,]?[0-9]*[.|,]?[0-9]*$/.test(string)
+        }
+        console.log(isANumber("12"));
+
+        // Find min integer
+        function findMinInteger(a, b, c) {
+            // if (a <= b && a <= c) {
+            //     return a;
+            // }
+            // if (b <= a && b <= c) {
+            //     return b;
+            // }
+            // if (c <= b && c <= a) {
+            //     return c;
+            // }
+
+            // let min = a;
+            // if (b <= min) {
+            //     min = b;
+            // }
+            // if (c <= min) {
+            //     min = c;
+            // }
+            // return min;
+
+            let arr = [a, b, c]
+            return arr.sort()[0]
+        }
+        console.log(findMinInteger(2, 1, 3));
+
+        // Check if positive number
+        function isPositiveInteger(num) {
+            if (isNaN(num)) {
+                return false;
+            }
+
+            return num > 0 && num % 1 == 0
+        }
+        console.log(isPositiveInteger("ans"));
+
+    </script>
+</body>
+
+</html>
