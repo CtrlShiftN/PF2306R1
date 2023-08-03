@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Palindrome</title>
+</head>
+
+<body>
+    <script>
+        let testCases = [null, "", "a", "ab", "abc", "aba", "abba", " abba", "abab"];
+        function isEmpty(str) {
+            return str == "" || str == null || str.length == 0;
+        }
+        function reverseStr(str) {
+            let strArr = [...str];
+            let result = [];
+            for (let i = strArr.length - 1; i >= 0; i--) { // O(n)
+                result.push(strArr[i]);
+            }
+            return result.join('').trim();
+        }
+        // CACH 01
+        function isPalindrome(str) {
+            if (isEmpty(str)) {
+                return false;
+            }
+
+            return str.trim() == reverseStr(str);
+        }
+        for (let i = 0; i < testCases.length; i++) { 
+            console.log("Cach 01: ", testCases[i], ": ", isPalindrome(testCases[i]));
+        }
+
+        // CACH 02
+        function isPalindromeStr(str) { // O(n/2)
+            let result = true;
+            if (isEmpty(str)) {
+                return false;
+            }
+            str = str.trim();
+            let strArr = [...str];
+            let left = 0;
+            let right = strArr.length - 1;
+            while (left <= right) {
+                console.log("left = ", strArr[left], ", right = ", strArr[right]);
+                if (strArr[left] != strArr[right]) {
+                    result = false;
+                    break;
+                }
+                left++;
+                right--;
+            }
+            return result;
+        }
+        for (let i = 0; i < testCases.length; i++) {
+            console.log("Cach 02: ", testCases[i], ": ", isPalindromeStr(testCases[i]));
+        }
+    </script>
+</body>
+
+</html>

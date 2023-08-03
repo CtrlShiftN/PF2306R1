@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.2.3/css/bootstrap.min.css">
+    <script src="assets/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container pt-3">
+        <h2>Add New Product</h2>
+        <input class="form-control" type="text" id="inputField">
+        <br>
+        <button class="btn btn-success" dataID="test" id="actionBtn">Add</button>
+        <hr>
+        <h2>Display All Products</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2">Product Name</th>
+                    <th colspan="2" class="text-end text-danger" id="totalAmount">9 products</th>
+                </tr>
+            </thead>
+            <tbody id="productList">
+                <!-- Display all product here -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let input = document.getElementById('inputField');
+        let actionBtn = document.getElementById('actionBtn');
+        let totalAmount = document.getElementById('totalAmount');
+        let productList = document.getElementById('productList');
+        let isActionAdd = true;
+        let productArr = ["Sony", "HP", "Nokia"];
+        function displayAllProduct() {
+            let htmlText = "";
+            for (let i = 0; i < productArr.length; i++) {
+                htmlText += `<tr>
+                    <td>${i + 1}</td>
+                    <td>${productArr[i]}</td>
+                    <td>
+                        <button class="btn btn-info" id="${i}" onclick="edit(this)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" id="${i}" onclick="remove(this)">Delete</button>
+                    </td>
+                </tr>`
+            }
+            actionBtn.innerText = isActionAdd ? "Add" : "Save";
+            productList.innerHTML = htmlText;
+            totalAmount.innerText = productArr.length + " products";
+        }
+        function removeAnElementAt(array, index) {
+            let result = [];
+            for (let i = 0; i < array.length; i++) {
+                if(index != i) {
+                    result.push(array[i]);
+                }
+            }
+            return result;
+        }
+        function remove(obj) {
+            let id = obj.id;
+            productArr = removeAnElementAt(productArr, id);
+            displayAllProduct()
+        }
+        function edit(obj) {
+            let id = obj.id;
+            isActionAdd = false;
+            actionBtn.setAttribute("dataID", id)
+            input.value = productArr[id];
+            displayAllProduct()
+        }
+        actionBtn.addEventListener("click", function() {
+            if (isActionAdd) {
+                productArr.push(input.value);
+            }else {
+                // update the value of input with new one and then push it to arr
+                let data = actionBtn.getAttribute("dataID");
+                productArr[data]= input.value;
+                isActionAdd = true;
+            }
+            input.value = "";
+            displayAllProduct()
+        })
+        
+        displayAllProduct()
+    </script>
+</body>
+
+</html>
