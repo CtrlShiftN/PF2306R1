@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Rect</title>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="mainFrame"></canvas>
+        <p id="result"></p>
+    </div>
+    <script>
+        let result = document.getElementById("result");
+        let canvas = document.getElementById("mainFrame");
+        canvas.width = "500";
+        canvas.height = "500";
+        canvas.style = "border: 1px solid black";
+        const ctx = canvas.getContext('2d');
+        let x = 150, y = 20;
+        let rectWidth = 150, rectHeight = 75;
+        let distance = 10, speed = 50;
+        let count = 0;
+        // Functions to draw
+        function drawRect() {
+            ctx.fillStyle = "blue";
+            ctx.fillRect(x, y, rectWidth, rectHeight); // x, y, width, height
+        }
+        function clearRect() {
+            ctx.clearRect(x, y, rectWidth, rectHeight);
+        }
+        // function drawText() {
+        //     ctx.fillStyle = "red";
+        //     ctx.font = "40px Arial"
+        //     ctx.fillText(count, x + rectWidth / 2 - 8, y + rectHeight / 2 + 8)
+        // }
+        // function moveUp() {
+        //     clearRect()
+        //     if (y > 0) {
+        //         y--;
+        //     }
+        //     drawRect()
+        // }
+        // function moveDown() {
+        //     clearRect()
+        //     if (y + rectHeight < 500) {
+        //         y++;
+        //     }
+        //     drawRect()
+        // }
+        function moveRectTopDown() {
+            // requestAnimationFrame(moveRectTopDown)
+            clearRect();
+            let isTouchTop = y <= 0;
+            let isTouchBottom = y + rectHeight >= 500;
+            if (isTouchTop || isTouchBottom) {
+                distance = -distance;
+                // count++;
+            }
+            y += distance;
+            drawRect();
+            // drawText();
+        }
+        function moveRectLeftRight() {
+            // TODO
+        }
+        // TODO: Add animation
+        function init() {
+            drawRect();
+            let gameLoop = setInterval(moveRectTopDown, speed)
+        }
+        init()
+    </script>
+</body>
+
+</html>

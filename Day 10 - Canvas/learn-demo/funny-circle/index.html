@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Circles</title>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="mainFrame"></canvas>
+    </div>
+    <script>
+        let canvas = document.getElementById("mainFrame");
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+
+        function genHexString(len) {
+            const hex = '0123456789ABCDEF';
+            let output = '';
+            for (let i = 0; i < len; ++i) {
+                output += hex.charAt(Math.floor(Math.random() * hex.length));
+            }
+            return output;
+        }
+        function getRandomColor() {
+            return "#" + genHexString(6);
+        }
+        function createCircle() {
+            let radius = Math.floor(Math.random() * 80 + 5);
+            let x = Math.floor(Math.random() * innerWidth);
+            let y = Math.floor(Math.random() * innerHeight);
+            let ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = getRandomColor();
+            ctx.fill();
+        }
+        for (let i = 0; i < 100; i++) {
+            createCircle();
+            createCircle();
+            createCircle();
+        }
+    </script>
+</body>
+
+</html>

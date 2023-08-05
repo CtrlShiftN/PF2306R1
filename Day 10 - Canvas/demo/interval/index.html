@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2 id="time"></h2><br/>
+    </div>
+    <script>
+        let hour, minute, second;
+        let time = document.getElementById("time")
+        function getCurrentTime() {
+            let now = new Date(); // get current time stamp
+            hour = now.getHours(); // get current hour
+            minute = now.getMinutes(); // get current minute
+            second = now.getSeconds(); // get current second
+            console.log(`${hour}:${minute}:${second}`);
+        }
+        function displayTime() {
+            getCurrentTime();
+            time.innerText = `${hour}:${minute}:${second}`
+        }
+        let timer = setInterval(displayTime, 1000)
+        // clearInterval(timer)
+    </script>
+</body>
+</html>

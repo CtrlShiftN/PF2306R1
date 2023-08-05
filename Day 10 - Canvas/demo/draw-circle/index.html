@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Circle</title>
+</head>
+
+<body>
+    <div class="containter">
+        <h2 id='circle'>Circle Drawing</h2>
+        <canvas id="mainFrame" width="500" height="500"></canvas>
+    </div>
+    <script>
+        let canvas = document.getElementById('mainFrame');
+        canvas.style = "border: 1px red solid"
+        // Circle 
+        let ctx = canvas.getContext("2d");
+        ctx.beginPath(); // start
+        ctx.arc(95, 50, 50, 0, 2 * Math.PI); // x, y, radius, startPoint, endPoint
+        ctx.stroke(); // draw
+        // Rect
+        ctx.fillStyle = "blue";
+        ctx.fillRect(150, 20, 150, 75); // x, y, width, height
+        // Text 
+        ctx.font = '36pt Calibri';// font style and size
+        ctx.fillText("Hello", 40, 100);// text, x, y
+        // Image
+        let imageObj = new Image();
+        imageObj.onload = function () {
+            ctx.drawImage(imageObj, 20, 150); // imageObject, x, y
+        };
+        imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+
+    </script>
+</body>
+
+</html>
