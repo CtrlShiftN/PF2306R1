@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Class</title>
+</head>
+
+<body>
+    <script>
+        class MyDate {
+            constructor(day, month, year) {
+                if (this.#validateDay(day) && this.#validateMonth(month) && this.#validateYear(year)) {
+                    this.day = day;
+                    this.month = month;
+                    this.year = year;
+                } else {
+                    throw Error("The input date is invalid!");
+                }
+            }
+            getDay() {
+                return this.day < 10 ? "0" + this.day : this.day;
+            }
+            getMonth() {
+                return this.month < 10 ? "0" + this.month : this.month;
+            }
+            getYear() {
+                return this.year;
+            }
+            setDay(newDay) {
+                if (this.#validateDay(newDay)) {
+                    this.day = newDay;
+                } else {
+                    throw Error("The input day is not valid");
+                }
+            }
+            setMonth(newMonth) {
+                if (this.#validateMonth(newMonth)) {
+                    this.month = newMonth;
+                } else {
+                    throw Error("The input month is not valid");
+                }
+            }
+            setYear(newYear) {
+                if (this.#validateYear(newYear)) {
+                    this.year = newYear;
+                } else {
+                    throw Error("The input year is not valid");
+                }
+            }
+            setDate(day, month, year) {
+                if (this.#validateDay(day) && this.#validateMonth(month) && this.#validateYear(year)) {
+                    this.day = day;
+                    this.month = month;
+                    this.year = year;
+                } else {
+                    throw Error("The input date is invalid!");
+                }
+            }
+            #validateDay(day) {
+                return day >= 1 && day <= 31; // Check leap year
+            }
+            #validateMonth(month) {
+                return month >= 1 && month <= 12;
+            }
+            #validateYear(year) {
+                return year >= 1970 && year <= 3000;
+            }
+            toString() {
+                return this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
+            }
+        }
+        let date = new MyDate(30, 2, 2007);
+        let day = date.getDay(); // 2
+        let month = date.getMonth(); // 2
+        let year = date.getYear(); // 2007
+        console.log(day + "/" + month + "/" + year);
+        date.setDay(10);
+        date.setMonth(9);
+        date.setYear(2019);
+        console.log(date.toString());
+        date.setDate(8, 8, 2023);
+        console.log(date.toString());
+    </script>
+</body>
+
+</html>

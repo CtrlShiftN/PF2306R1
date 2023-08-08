@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Usage</title>
+</head>
+
+<body>
+    <script>
+        class Battery {
+            constructor() {
+                this.energy = 0;
+            }
+            getEnergy() {
+                return this.energy;
+            }
+            setEnergy(amount) {
+                this.energy = amount;
+            }
+            decreaseEnergy() {
+                if (this.energy > 0) {
+                    this.energy = this.energy - 1;
+                }
+            }
+        }
+        class FlashLamp {
+            constructor() {
+                this.status = false;
+                this._battery = new Battery();
+            }
+            setBattery(battery) {
+                this._battery = battery;
+            }
+            getBatteryInfo() {
+                return this._battery.getEnergy();
+            }
+            light() {
+                if (this.status) {
+                    console.log("Lighting");
+
+                } else {
+                    console.log("Not lighting");
+                }
+            }
+            turnOn() {
+                this.status = true;
+                this._battery.decreaseEnergy();
+            }
+            turnOff() {
+                this.status = false;
+            }
+        }
+        // let batt = new Battery();
+        // batt.setEnergy(10);
+        // console.log(batt);
+        // let lamp = new FlashLamp();
+        // lamp.setBattery(batt);
+        // console.log(lamp);
+        // lamp.turnOn();
+        // console.log(lamp);
+        // lamp.turnOff()
+        // console.log(lamp);
+        // lamp.turnOn()
+        // console.log(lamp);
+
+        let battery = new Battery();
+        battery.setEnergy(10);
+
+        let flashLamp = new FlashLamp();
+        flashLamp.setBattery(battery);
+
+        document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+        flashLamp.light();
+
+        document.write("Turn on<br/>")
+        flashLamp.turnOn();
+        flashLamp.light();
+        document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+
+        document.write("Turn off<br/>")
+        flashLamp.turnOff();
+        flashLamp.light();
+    </script>
+</body>
+
+</html>

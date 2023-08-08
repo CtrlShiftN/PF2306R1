@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle</title>
+</head>
+
+<body>
+    <script>
+        class Circle {
+            constructor(radius, color) {
+                this.radius = radius;
+                this.color = color;
+            }
+            getRadius() {
+                return this.radius;
+            }
+            getArea() {
+                return this.radius * this.radius * Math.PI;
+            }
+            setRadius(newRadius) {
+                if (this.#validateRadius(newRadius)) {
+                    this.radius = newRadius;
+                } else {
+                    throw Error('Invalid Radius');
+                }
+            }
+            static printObject() { // static method
+                console.log(`This ${this.constructor.name} has radius = ${this.radius} and color = ${this.color}`);
+                this.#printTest()
+            }
+            #printTest() { // private method
+                console.log("This is a test");
+            }
+            #validateRadius(radius) {
+                return radius > 0;
+            }
+        }
+        let circleOne = new Circle(5, 'red');
+        console.log(circleOne);
+        console.log(circleOne.getRadius());
+        console.log(circleOne.color);
+        console.log(circleOne.getArea());
+        circleOne.setRadius(10);
+        console.log(circleOne.radius);
+        console.log(circleOne.getArea());
+        // circleOne.printObject();
+        // circleOne.printTest();
+        // Circle.printObject();
+        // Math.pow(), Math.random(), ...
+        let circleTwo = new Circle(8, 'blue');
+        console.log(circleTwo);
+        console.log(circleTwo.getRadius());
+        console.log(circleTwo.color);
+        console.log(circleTwo.getArea());
+        circleTwo.setRadius(10);
+        console.log(circleTwo.radius);
+        console.log(circleTwo.getArea());
+    </script>
+</body>
+
+</html>
