@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rect</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 id='rect'>Rectangle</h2>
+        <input type="number" onchange="getHeight(this)" placeholder="Enter rect height...">
+        <br><br>
+        <input type="number" onchange="getWidth(this)" placeholder="Enter rect width...">
+        <br>
+        <br>
+        <button id="processBtn">Process</button>
+        <br><br>
+        <canvas id="mainFrame"></canvas>
+    </div>
+    <script>
+        let canvas = document.getElementById('mainFrame');
+        let ctx = canvas.getContext("2d");
+        let processBtn = document.getElementById('processBtn');
+        let x = 50, y = 50;
+        let rectBgColor = "#ff22ff";
+        let inputHeight, inputWidth;
+        function getHeight(obj) {
+            inputHeight = obj.value;
+        }
+        function getWidth(obj) {
+            inputWidth = obj.value;
+        }
+
+        class Rectangle {
+            constructor(width, height) {
+                this._height = parseInt(height);
+                this._width = parseInt(width);
+                this._color = "#a6a6a6";
+            }
+            getHeight() {
+                return this._height;
+            }
+            getWidth() {
+                return this._width;
+            }
+            getColor() {
+                return this._color;
+            }
+            setHeight(height) {
+                this._height = height;
+            }
+            setWidth(width) {
+                this._width = width;
+            }
+            setColor(color) {
+                this._color = color;
+            }
+            getArea() {
+                return this._height * this._width;
+            }
+            getPerimeter() {
+                return (this._height + this._width) * 2;
+            }
+            draw() {
+                ctx.fillStyle = this._color;
+                ctx.fillRect(x, y, this._width, this._height);
+            }
+        }
+
+        processBtn.addEventListener("click", function () {
+            if (!inputHeight || !inputWidth) {
+                alert("Please enter the values.");
+            } else {
+                let rect = new Rectangle(inputWidth, inputHeight);
+                console.log(`The area of rectangle is ${rect.getArea()} and perimeter is ${rect.getPerimeter()}`);
+                rect.setColor("#aabbcc")
+                rect.draw()
+            }
+        })
+    </script>
+</body>
+
+</html>

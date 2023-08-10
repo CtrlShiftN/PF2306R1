@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving objects</title>
+</head>
+
+<body>
+    <canvas id="mainFrame"></canvas>
+    <script>
+        let canvas = document.getElementById("mainFrame");
+        canvas.width = "500"
+        canvas.height = "500"
+        let ctx = canvas.getContext("2d");
+        let speed = 130;
+        class Hero {
+            constructor(image, positionX, positionY, size) {
+                this._image = image;
+                this._positionX = positionX || null;
+                this._positionY = positionY || null;
+                this._size = size || null;
+                this._distance = 10;
+            }
+            setDistance(distance) {
+                this._distance = distance;
+            }
+            moveHeroRight() {
+                this._positionX += this._distance;
+            }
+            drawHero(context) {
+                context.drawImage(this._image, this._positionX, this._positionY, this._size, this._size)
+            }
+            clearHero(context) {
+                context.clearRect(0, 0, canvas.width, canvas.height)
+            }
+            moveRight() {
+                this._positionX += this._distance;
+            }
+        }
+        let imageObj = new Image();
+        let action = 2, neg = -1;
+        imageObj.src = `./assets/media/images/pikachu/pikachu${action}.png`;
+        let hero = new Hero(imageObj, 50, 50, 200);
+        function play() {
+            hero.clearHero(ctx);
+            let isTouchLeft = hero._positionX <= 0;
+            let isTouchRight = hero._positionX + hero._size >= canvas.width;
+            action += neg;
+            neg = -neg;
+            imageObj.src = `./assets/media/images/pikachu/pikachu${action}.png`;
+            // console.log(action, neg);
+            // console.log(isTouchLeft, isTouchRight);
+            if (isTouchLeft || isTouchRight) {
+                hero.setDistance(0)
+                // count++;
+            }
+            hero.moveHeroRight()
+            hero.drawHero(ctx)
+            // drawText();
+        }
+        let gamePlay = setInterval(play, speed);
+    </script>
+</body>
+
+</html>

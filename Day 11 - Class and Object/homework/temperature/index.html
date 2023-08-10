@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature</title>
+</head>
+
+<body>
+    <script>
+        class Temperature {
+            constructor(celsius) {
+                if (this.#validateCelsius(celsius)) {
+                    this._celsius = celsius;
+                } else {
+                    throw new Error('Invalid temperature');
+                }
+            }
+            getCelsius() {
+                return this._celsius;
+            }
+            setCelsius(celsius) {
+                if (this.#validateCelsius(celsius)) {
+                    this._celsius = celsius;
+                } else {
+                    throw new Error('Invalid temperature');
+                }
+            }
+            toF() {
+                return this._celsius * 9 / 5 + 32;
+            }
+            toK() {
+                return this._celsius + 273.15;
+            }
+            #validateCelsius(celsius) {
+                return celsius >= -273;
+            }
+        }
+        let tem = new Temperature(25);
+        console.log(`The value of C is ${tem.getCelsius()}`)
+        console.log(`F = ${tem.toF()}`);
+        console.log(`K = ${tem.toK()}`);
+    </script>
+</body>
+
+</html>
