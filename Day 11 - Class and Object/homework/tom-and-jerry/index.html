@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom and Jerry</title>
+</head>
+
+<body>
+    <script>
+        class Rat {
+            constructor(name, weight, speed) {
+                this._name = name;
+                this._weight = weight;
+                this._speed = speed;
+                this._status = true;
+            }
+            getSpeed() {
+                return this._speed;
+            }
+            getWeight() {
+                return this._weight;
+            }
+            makeNoise() {
+                console.log("Chit chit");
+            }
+            getStatus() {
+                return this._status;
+            }
+            isDead() {
+                return !this._status;
+            }
+            die() {
+                this._status = false;
+            }
+        }
+        class Cat {
+            constructor(name, weight, speed) {
+                this._name = name;
+                this._weight = weight;
+                this._speed = speed;
+                this._ratCaught = null;
+            }
+            makeNoise() {
+                console.log("Meo meo");
+            }
+            catch(rat) {
+                if (this._speed > rat.getSpeed() && this._ratCaught == null) {
+                    this._ratCaught = rat;
+                }
+            }
+            eat() {
+                let caughtRat = this._ratCaught;
+                if (caughtRat && !caughtRat.isDead()) {
+                    this._weight += caughtRat.getWeight();
+                    this._ratCaught = null;
+                    caughtRat.die();
+                }
+            }
+        }
+        let jerry = new Rat("Jerry", 10, 20);
+        let jerry1 = new Rat("Jerry 1", 15, 15);
+        let jerry2 = new Rat("Jerry 2", 20, 10);
+        let tom = new Cat("Tom", 10, 16);
+        tom.catch(jerry);
+        console.log(tom._ratCaught);
+        console.log(tom);
+        tom.catch(jerry1);
+        jerry1.die();
+        tom.eat();
+        console.log(tom._ratCaught);
+        console.log(tom);
+        tom.catch(jerry2);
+        tom.eat();
+        console.log(tom);
+        console.log(tom._ratCaught);
+    </script>
+</body>
+
+</html>

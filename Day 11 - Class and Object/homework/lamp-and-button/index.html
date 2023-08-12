@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class ElectricLamp {
+            constructor() {
+                this._status = false;
+            }
+            getStatus() {
+                return this._status;
+            }
+            turnOn() {
+                this._status = true;
+            }
+            turnOff() {
+                this._status = false;
+            }
+        }
+        class SwitchButton {
+            constructor() {
+                this._status = false;
+                this._lamp = null;
+            }
+            switchOn() {
+                this._status = true;
+                if (this._lamp) {
+                    this._lamp.turnOn();
+                }
+            }
+            getStatus() {
+                return this._status;
+            }
+            switchOff() {
+                this._status = false;
+                if (this._lamp) {
+                    this._lamp.turnOff();
+                }
+            }
+            connectToLamp(lamp) {
+                this._lamp = lamp;
+            }
+        }
+        let electricLamp = new ElectricLamp();
+        let button = new SwitchButton();
+        button.connectToLamp(electricLamp);
+        console.log('button status: ' + button.getStatus()); //false
+        console.log('electric lamp: ' + electricLamp.getStatus());
+        button.switchOn();
+        console.log('button status: ' + button.getStatus()); //false
+        console.log('electric lamp: ' + electricLamp.getStatus());
+        button.switchOff();
+        console.log('button status: ' + button.getStatus()); //false
+        console.log('electric lamp: ' + electricLamp.getStatus());
+        button.switchOn();
+        console.log('button status: ' + button.getStatus()); //false
+        console.log('electric lamp: ' + electricLamp.getStatus());
+        button.switchOff();
+        console.log('button status: ' + button.getStatus()); //false
+        console.log('electric lamp: ' + electricLamp.getStatus());
+    </script>
+</body>
+
+</html>

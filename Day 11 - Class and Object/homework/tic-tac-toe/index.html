@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.2.3/css/bootstrap.min.css">
+    <script src="assets/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Tic Tac Toe</h1>
+        <div class="text-center">
+            <table id="board" class="table d-flex justify-content-center table-bordered">
+
+            </table>
+        </div>
+
+    </div>
+    <script>
+        class GameBoard {
+            constructor(size) {
+                this._size = size;
+                this._gameMatrix = [];
+                this._totalSymbolToWin = 5;
+                this._count = -1;
+                this._currentPosition = [];
+                this._domElement = null;
+                this._symbol = "X";
+            }
+            init(domElement) {
+                this._domElement = domElement;
+                for (let row = 0; row < this._size; row++) {
+                    this._gameMatrix[row] = [];
+                    for (let col = 0; col < this._size; col++) {
+                        this._gameMatrix[row][col] = 0;
+                    }
+                }
+            }
+            displayGameBoard() {
+                let str = "";
+                for (let row = 0; row < this._size; row++) {
+                    str += "<tr class=\"d-flex\">"
+                    for (let col = 0; col < this._size; col++) {
+                        let currentVal = this._gameMatrix[row][col] == 0 ? "" : this._gameMatrix[row][col];
+                        str += `<td class="p-0 d-flex align-items-center justify-content-center" width="50" height="50" id="${row}-${col}" onclick="move(this)">${currentVal}</td>`;
+                    }
+                    str += "</tr>";
+                }
+                this._domElement.innerHTML = str;
+            }
+            isChecked(positionX, positionY) {
+                return this._gameMatrix[positionX][positionY] != 0;
+            }
+            #changeSymbol() {
+                if (this._count % 2 == 0) {
+                    this._symbol = "O";
+                } else {
+                    this._symbol = "X";
+                }
+            }
+            makeMove(positionX, positionY) {
+                if (!this.isChecked(positionX, positionY)) {
+                    this._currentPosition = [positionX, positionY];
+                    this._gameMatrix[positionX][positionY] = this._symbol;
+                    this._count += 1;
+                }
+                if (this.#isGameOverHorizontal()) {
+                    alert(`Player ${this._symbol} wins!`);
+                    this.endGame();
+                }
+                this.#changeSymbol();
+                this.displayGameBoard();
+            }
+            // Check Horizontal Winning Condition
+            #isGameOverHorizontal() {
+                let x = parseInt(this._currentPosition[0]);
+                let y = parseInt(this._currentPosition[1]);
+                console.log(x, y);
+                let startPointY, endPointY, sum = 0;
+                let isOver = false;
+                if (y - this._totalSymbolToWin < 0) {
+                    startPointY = 0;
+                } else {
+                    startPointY = y - this._totalSymbolToWin + 1;
+                }
+                if (y + this._totalSymbolToWin > this._size - 1) {
+                    endPointY = this._size - 1;
+                } else {
+                    endPointY = y + this._totalSymbolToWin - 1;
+                }
+                console.log("st-et", startPointY, endPointY);
+                for (let i = startPointY; i <= endPointY; i++) {
+                    // console.log("x-i, sym", x, i, this._symbol);
+                    console.log(this._gameMatrix[x]);
+                    if (this._gameMatrix[x][i] == this._symbol) {
+                        sum++;
+                        if (sum == this._totalSymbolToWin){
+                            isOver = true;
+                            break;
+                        }
+                    } else {
+                        sum = 0;
+                    }
+                }
+                console.log("sum", sum);
+                return isOver;
+            }
+
+            endGame(){
+                this.init(this._domElement);
+                this.displayGameBoard();
+            }
+
+        }
+        let board = document.getElementById("board");
+        let game = new GameBoard(20);
+        game.init(board);
+        game.displayGameBoard();
+
+        function move(obj) {
+            let position = obj.id.split("-");
+            console.log("xx", position);
+            game.makeMove(position[0], position[1]);
+        }
+        // play();
+    </script>
+</body>
+
+</html>

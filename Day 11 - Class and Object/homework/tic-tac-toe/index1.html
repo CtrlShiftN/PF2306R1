@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.2.3/css/bootstrap.min.css">
+    <script src="assets/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Tic Tac Toe</h1>
+        <div class="text-center">
+            <table id="board" class="table d-flex justify-content-center table-bordered">
+                
+            </table>
+        </div>
+
+    </div>
+    <script>
+        const N = 20;
+        const NO_OF_SYMBOL_TO_WIN = 5;
+        let gameMatrix = [];
+        let count = -1;
+        let gameBoard = document.getElementById("board");
+        let symbol;
+
+        function init() {
+            for (let row = 0; row < N; row++) {
+                gameMatrix[row] = [];
+                for (let col = 0; col < N; col++) {
+                    gameMatrix[row][col] = 0;
+                }
+            }
+        }
+        function displayGameBoard() {
+            let str = "";
+            for (let row = 0; row < N; row++) {
+                str += "<tr class=\"d-flex\">"
+                for (let col = 0; col < N; col++) {
+                    let currentVal = gameMatrix[row][col] == 0 ? "" : gameMatrix[row][col];
+                    str += `<td class="p-0 d-flex align-items-center justify-content-center" width="50" height="50" id="${row}-${col}" onclick="move(this)">${currentVal}</td>`;
+                }
+                str += "</tr>";
+            }
+            gameBoard.innerHTML = str;
+        }
+
+        function isChecked(positionArray) {
+            let x = positionArray[0];
+            let y = positionArray[1];
+            return gameMatrix[x][y] != 0;
+        }
+
+        function getSymbol(count) {
+            return count % 2 == 0 ? "X" : "O"
+        }
+
+        function move(obj) {
+            let position = obj.id.split("-");
+            let isCheckedCell = isChecked(position);
+            symbol = getSymbol(count);
+            if (!isCheckedCell) {
+                gameMatrix[position[0]][position[1]] = symbol;
+                count++;
+            }
+            if (isGameOverHorizontal(position)) {
+                alert(`Player ${symbol} wins!`);
+            }
+            // console.log(isCheckedCell);
+            displayGameBoard();
+        }
+
+        function isGameOverHorizontal2(positionArr) {
+            let x = positionArr[0];
+            let y = positionArr[1];
+            let sum = 0;
+            let isOver = false;
+            for (let i = 0; i < N; i++) {
+                if (gameMatrix[x][i] == symbol) {
+                    sum++;
+                    if (sum == NO_OF_SYMBOL_TO_WIN) {
+                        isOver = true;
+                        break;
+                    }
+                } else {
+                    sum = 0;
+                }
+            }
+            return isOver;
+        }
+
+        function isGameOverHorizontal(positionArr) {
+            let x = positionArr[0];
+            let y = positionArr[1];
+            console.log(positionArr);
+            let startPointY, endPointY, sum;
+            let isOver = false;
+            for (let i = 0; i < NO_OF_SYMBOL_TO_WIN; i++) {
+                sum = 0;
+                if (y - i < 0) {
+                    startPointY = 0;
+                } else {
+                    startPointY = y - i;
+                }
+                if (startPointY + NO_OF_SYMBOL_TO_WIN > N - 1) {
+                    endPointY = N - 1;
+                } else {
+                    endPointY = startPointY + NO_OF_SYMBOL_TO_WIN - 1;
+                }
+                // console.log("X=", x);
+                // console.log("S=", startPointY, ", E=", endPointY);
+                for (let col = startPointY; col <= endPointY; col++) {
+                    if (gameMatrix[x][col] == symbol) {
+                        sum++;
+                    }
+                }
+                if (sum == NO_OF_SYMBOL_TO_WIN) {
+                    isOver = true;
+                    break;
+                }
+            }
+
+            return isOver;
+        }
+
+        function play() {
+            init();
+            displayGameBoard();
+        }
+        play();
+    </script>
+</body>
+
+</html>

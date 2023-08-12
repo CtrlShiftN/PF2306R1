@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Remote</title>
+</head>
+
+<body>
+    <script>
+        class Remote {
+            constructor() {
+                this._code = null;
+                this._television = null;
+            }
+            connectTo(television) {
+                this._television = television;
+            }
+            turnOnTV() {
+                if (this._television) {
+                    this._television.on();
+                }
+            }
+            turnOffTV() {
+                if (this._television) {
+                    this._television.off();
+                }
+            }
+            volumeUp() {
+                if (this._television) {
+                    this._television.volumeUp();
+                }
+            }
+            volumeDown() {
+                if (this._television) {
+                    this._television.volumeDown();
+                }
+            }
+            setChannel(channel) {
+                this._television.changeChannel(channel);
+            }
+        }
+        class Television {
+            constructor() {
+                this._channel = null;
+                this._volumn = 20;
+                this._status = false;
+            }
+            on() {
+                if (this._status) {
+                    console.log("TV is currently on");
+                    // throw Error("")
+                } else {
+                    this._status = true;
+                }
+            }
+            off() {
+                if (this._status) {
+                    this._status = false;
+                } else {
+                    console.log('TV is already off');
+                }
+            }
+            changeChannel(channel) {
+                if (this._status) {
+                    this._channel = channel;
+                } else {
+                    throw Error("Invalid channel");
+                }
+            }
+            volumeUp() {
+                if (this._status) {
+                    this._volumn += 1;
+                }
+            }
+            volumeDown() {
+                if (this._status) {
+                    this._volumn -= 1;
+                }
+            }
+        }
+        let television = new Television();
+        let remote = new Remote();
+        remote.connectTo(television);
+        console.log(television);
+        console.log(remote);
+        remote.turnOnTV();
+        console.log(television);
+        console.log(remote);
+        television.changeChannel(7);
+        // remote.setChannel(7);
+        console.log(television);
+        console.log(remote);
+        remote.setChannel(3);
+        console.log(television);
+        console.log(remote);
+        remote.volumeUp();
+        remote.volumeUp();
+        console.log(television);
+        console.log(remote);
+        remote.turnOffTV();
+        console.log(television);
+        console.log(remote);
+    </script>
+</body>
+
+</html>
