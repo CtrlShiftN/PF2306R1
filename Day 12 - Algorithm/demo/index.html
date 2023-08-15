@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="mainFrame"></canvas>
+    <script src="assets/js/Rect.js"></script>
+    <script src="assets/js/Circle.js"></script>
+    <script>
+        let canvas = document.getElementById("mainFrame");
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        let rect1 = new Rect(10, 20, 200, 100);
+        rect1.setColor("#ff0000");
+        rect1.draw("mainFrame");
+        let rect2 = new Rect(30, 121, 200, 100);
+        rect2.setColor("#0066cc");
+        rect2.draw("mainFrame");
+        console.log("Rect 1 - 2: ", rect1.isCollisionRect(rect2));
+        let cir1 = new Circle(240, 225, 20);
+        cir1.setColor("#00ff00");
+        cir1.draw("mainFrame");
+        let cir2 = new Circle(240, 215, 20);
+        cir2.setColor("#0000ff");
+        cir2.draw("mainFrame");
+        console.log("Circle 1 - 2", cir1.isCollisionCircle(cir2));
+        console.log("Rect 1 - cir 1", cir1.isCollisionRect(rect1));
+        console.log("Rect 2 - cir 1", cir1.isCollisionRect(rect2));
+    </script>
+</body>
+
+</html>
