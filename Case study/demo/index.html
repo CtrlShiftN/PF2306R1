@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="mainFrame"></canvas>
+    </div>
+
+    <script src="assets/js/Rect.js"></script>
+    <script src="assets/js/Circle.js"></script>
+    <script>
+        let canvas = document.getElementById("mainFrame");
+        canvas.width = 500;
+        canvas.height = 500;
+        canvas.style = "border: 1px solid black";
+        let x = 250, y = 450, speed = 20;
+        let xMoving = 5, yMoving = 5;
+        let ball = new Circle(x, y, 20);
+        ball.setColor("#ff0000");
+        ball.draw("mainFrame");
+
+        function play() {
+            ball.clear("mainFrame");
+            x += xMoving;
+            if (x <= ball.getRadius() || x >= canvas.width - ball.getRadius()) {
+                xMoving = -xMoving;
+            }
+            y += yMoving;
+            if (y <= ball.getRadius() || y >= canvas.height - ball.getRadius()) {
+                yMoving = -yMoving;
+            }
+            ball.updatePosition(x, y);
+            ball.draw("mainFrame");
+        }
+        setInterval(play, speed);
+    </script>
+</body>
+
+</html>
